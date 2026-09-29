@@ -4,10 +4,10 @@ const int N = 5e3, M = 5e4, INF = 0x3f3f3f3f;
 struct edge{
     int to, w, c, nxt;
 }e[(M << 1) + 5];
-int cnt = 1, head[N + 5], cur[N + 5], dis[N + 5];
+int a[25][25], cnt = 1, head[N + 5], cur[N + 5], dis[N + 5];
 queue<int> q;
 bool inq[N + 5], vis[N + 5];
-int n, m, s, t, maxf, minc;
+int n, m, s, t, maxf, minc, id;
 void add(int u, int v, int w, int c) {
     e[++cnt].to = v;
     e[cnt].w = w;
@@ -63,12 +63,18 @@ void dinic() {
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    cin >> n >> m >> s >> t;
-    for (int i = 1; i <= m; i++) {
-        int u, v, w, c;
-        cin >> u >> v >> w >> c;
-        add(u, v, w, c), add(v, u, 0, -c);
-    }
+    cin >> n;
+    for (int i = 1; i <= 3 * n; i++)
+        for (int j = 1; j <= 3 * 
+            n; j++)
+            cin >> a[i][j];
+    s = 1, t = 2, id = 3;
+    for (int i = 1; i <= 3 * n; i++)
+    for (int i = 1; i <= n; i++)
+        for (int j = i + 1; j <= n; j++) {
+            add(s, id, INF, 0);
+            add(id, s, 0, 0);
+        }
     dinic();
     cout << maxf << ' ' << minc;
     return 0;
